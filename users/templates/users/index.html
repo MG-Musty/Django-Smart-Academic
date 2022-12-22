@@ -1,0 +1,48 @@
+{% extends "users/layout.html "%}
+
+{% load static %}
+
+{% block title %}Home | Smart Academic{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div>
+                {% if user.is_authenticated %}
+                <div class="h4 mx-3" style="color: rgb(206, 178, 51);">Signed in as <strong>{{ user.username }}</strong>.</div>
+                {% else %}
+                    <h5 style="color: rgb(84, 28, 204);">Not signed in.</h5>
+                {% endif %}
+            </div>
+            <ul class="nav">
+                {% if user.is_authenticated %}   
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apply' %}">Apply Here</a>
+                </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <hr style="background-color: rgb(65, 65, 87);">
+    </nav>
+
+
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4" style="color: gray;">Smart Academic</h1>
+                <p class="lead font-italic">Come experience world class infrasture in both Tech and Fashion</p>
+                <hr class="my-4">
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

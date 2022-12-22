@@ -1,0 +1,48 @@
+{% extends "users/layout.html" %}
+
+{% load static %}
+
+{% block title %}Teacher Details | Smart Academic{% endblock %}
+
+{% block content %}
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'apply' %}">Home</a>
+        </ul>
+
+    </nav>
+
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4" style="color: gray;">Smart Academic</h1>
+                <p class="lead font-italic">Come experience world class infrasture in both Tech and Fashion</p>
+                <hr class="my-4">
+
+                <h4>{{ teacher.firstname }} {{ teacher.surname}}</h4>
+
+                <ul>
+                  <li>Mobile: {{ teacher.mobile }}</li>
+                  <li>Email: {{ teacher.email }}</li>
+                  <li>Location: {{ teacher.location }}</li>
+                  <li>Position: {{teacher.position }}</li>
+                </ul>
+              
+                <a href="{% url 'teacher-update' teacher.id %}">Edit</a>
+                <a href="{% url 'teacher-delete' teacher.id %}">Delete</a>
+                <a href="{% url 'teacher-list' %}">Back to List</a>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

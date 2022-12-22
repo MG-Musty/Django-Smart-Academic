@@ -1,0 +1,28 @@
+{% extends "users/layout.html" %}
+
+{% load static %}
+
+{% block title %}Login | Smart Academic{% endblock %}
+
+{% block content %}
+
+    <h2 style="color: rgb(40, 46, 213);">Login</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+
+    <div style="color: rgb(72, 74, 210);">Don't have an account?</div> <a href="{% url 'register' %}">Register here.</a>
+
+{% endblock %}
